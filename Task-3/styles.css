@@ -1,7 +1,6 @@
-body{
-    font-family: "Ubuntu";
+.navbar-brand{
+    font-family: "montserrat-black";
 }
-
 #Navbar{
     position: absolute;
     padding: 1% 6%;
@@ -48,6 +47,10 @@ h3{
 
 h5{
     display: inline;
+}
+
+h2,h3,h5{
+    font-family: "montserrat-black";
 }
 
 #AboutUs{
