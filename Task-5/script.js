@@ -1,6 +1,7 @@
 let cartImg = document.querySelector(".cart-image");
 let cart = document.querySelector(".cart");
 let closeCart = document.querySelector(".cart-remove");
+let total = 0;
 
 function openCart(){
     cart.classList.add("active");
@@ -11,65 +12,97 @@ function closedCart(){
 }
 
 function removeCart(event){
-    let buttonClicked = event.target;
-    let buttonClick = buttonClicked.parentElement;
+    var buttonClicked = event.target;
+    var buttonClick = buttonClicked.parentElement;
     buttonClick.parentElement.remove();
+}
+var totalPrice = document.getElementById("total-price");
+function CalculateTotal(price, quantity){
+    total = total + (price * quantity);
+    console.log(total);
+    totalPrice.innerText = "₹ " + total;
+}
+
+function reduceAmount(price, quantity){
+    total = total - (price * quantity);
+    totalPrice.innerText = "₹ " + total;
+}
+
+function buyNow(){
+    alert("Your order is placed!");
+    let cartContent = document.getElementsByClassName("cart-content")[0];
+    while(cartContent.hasChildNodes()){
+        cartContent.removeChild(cartContent.firstChild);
+    }
+    totalPrice.innerText = "₹" + 0;
 }
 
 function addCart(event){
     cart.classList.add("active");
-    let button = event.target;
-    let priceProducts = button.parentElement;
-    let shopProducts = priceProducts.parentElement;
-    let imageProducts = shopProducts.parentElement;
-    let productTitle = shopProducts.getElementsByClassName("card-title")[0].innerText;
-    let productPrice = shopProducts.getElementsByClassName("card-text")[0].innerText;
-    let productImage = imageProducts.getElementsByClassName("product-img")[0].src;
-    let cartContent = document.createElement("div");
+    var button = event.target;
+    var priceProducts = button.parentElement;
+    var shopProducts = priceProducts.parentElement;
+    var imageProducts = shopProducts.parentElement;
+    var productTitle = shopProducts.getElementsByClassName("card-title")[0].innerText;
+    var productPrice = shopProducts.getElementsByClassName("card-text")[0].innerText;
+    var productImage = imageProducts.getElementsByClassName("product-img")[0].src;
+    var cartContent = document.createElement("div");
     cartContent.classList.add("cart-box");
 
-    let cartItems = document.getElementsByClassName("cart-content")[0];
-    let cartItemsNames = document.getElementsByClassName("cart-product-title");
+    var cartItems = document.getElementsByClassName("cart-content")[0];
+    var cartItemsNames = document.getElementsByClassName("cart-product-title");
     
-    for(let i = 0; i < cartItemsNames.length; i++){
+    for(var i = 0; i < cartItemsNames.length; i++){
         if(cartItemsNames[i].innerText == productTitle){
             alert('Product already added to the Cart');
             return;
         }
     }
 
-    let sourceImage = document.createElement("img");
+    var sourceImage = document.createElement("img");
     sourceImage.classList.add("cart-img");
     sourceImage.src = productImage;
     cartContent.appendChild(sourceImage);
 
-    let cartDetail = document.createElement("div");
+    var cartDetail = document.createElement("div");
     cartDetail.classList.add("detail-box");
 
-    let cartProductTitle = document.createElement("div");
+    var cartProductTitle = document.createElement("div");
     cartProductTitle.classList.add("cart-product-title");
     cartProductTitle.innerText = productTitle;
     cartDetail.appendChild(cartProductTitle);
 
-    let cartProductPrice = document.createElement("div");
+    var cartProductPrice = document.createElement("div");
     cartProductPrice.classList.add("cart-price");
     cartProductPrice.innerText = productPrice;
     cartDetail.appendChild(cartProductPrice);
-    let price = productPrice.replace("₹", "");
 
-    let cartInput = document.createElement("input");
+    var price = productPrice.replace("₹ ", "");
+
+    var cartInput = document.createElement("input");
     cartInput.classList.add("cart-quantity");
     cartInput.type = 'number';
-    cartInput.value = 1;
+    cartInput.value = "1";
     cartInput.min = 1;
+    CalculateTotal(price, 1);
     cartDetail.append(cartInput);
+    var quantity = 1;
+    cartInput.addEventListener("change", () =>{
+        if(quantity<cartInput.value){
+            CalculateTotal(price, (cartInput.value - quantity));
+        }
+        else{
+            reduceAmount(price, (quantity - cartInput.value));
+        }
+        quantity=cartInput.value;
+    });
 
-    let cartRemove = document.createElement("i");
+    var cartRemove = document.createElement("i");
     cartRemove.classList.add("bx", "bx-trash-alt", "cart-remove");
     cartRemove.onclick = removeCart;
-    
     cartDetail.appendChild(cartRemove);
+
     cartContent.appendChild(cartDetail);
-    
     cartItems.append(cartContent);
+
 }
