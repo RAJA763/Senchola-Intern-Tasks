@@ -194,6 +194,9 @@ p,.btn-buy{
     .media-h6{
         padding: 0 0 11% 0 !important;
     }
+    h2{
+        padding-top: 10% !important;
+    }
 }
 
 @media(min-width:430px) and (max-width: 1024px){
