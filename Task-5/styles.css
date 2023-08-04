@@ -107,6 +107,7 @@ h3{
 .total-title{
     font-size: 1rem;
     font-weight: 600;
+    margin-right: 5px;
 }
 
 .total-price{
@@ -149,13 +150,19 @@ h6{
     background-color: #36d1dc;
 }
 
-h2{
-    padding: 8% 0 3% 0;
+.row{
+    margin: 0 !important;
+    padding: 2rem 2rem 0;
+}
+
+.section_title{
+    margin-bottom: 0 !important;
+    padding: 2rem 1rem 0;
     text-align: center;
 }
 
 .container{
-    padding: 0 2% 3% 2%;
+    margin-bottom: 20px;
 }
 
 .container:hover{
@@ -190,18 +197,20 @@ p,.btn-buy{
     font-size: 1.3rem;
 }
 
+@media(min-width:320px){
+    h2{
+        margin: 8% !important;
+    }
+}
+
 @media(min-width:430px) and (max-width: 768px){
     .media-h6{
         padding: 0 0 11% 0 !important;
     }
-    h2{
-        padding-top: 10% !important;
-    }
 }
 
-@media(min-width:430px) and (max-width: 1024px){
-    .media-bg{
-        padding: 0 0 11% 0 !important;    
+@media(min-width:320px) and (max-width: 1024px){
+    .media-img{
+        padding-left: 0px !important;
     }
 }
-
