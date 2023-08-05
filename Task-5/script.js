@@ -35,6 +35,7 @@ function buyNow(){
         cartContent.removeChild(cartContent.firstChild);
     }
     totalPrice.innerText = "₹" + 0;
+    total = 0;
 }
 
 function addCart(event){
