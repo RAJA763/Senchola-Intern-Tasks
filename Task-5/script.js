@@ -1,6 +1,4 @@
-let cartImg = document.querySelector(".cart-image");
 let cart = document.querySelector(".cart");
-let closeCart = document.querySelector(".cart-remove");
 let total = 0;
 
 function openCart(){
