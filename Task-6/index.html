@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe shop</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!--Bootstrap Script-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Box Icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <h1>Shoes</h1>
+    <div class="filter-bar">            
+        <button class="filter active" data-name="all" onclick="filterItem(event)">All</button>
+        <button class="filter" data-name="addidas" onclick="filterItem(event)">Addidas</button>
+        <button class="filter" data-name="furo" onclick="filterItem(event)">FURO</button>
+        <button class="filter" data-name="nike" onclick="filterItem(event)">Nike</button>
+        <button class="filter" data-name="puma" onclick="filterItem(event)">Puma</button>
+        <button class="filter" data-name="reebok" onclick="filterItem(event)">Reebok</button>
+        <button class="filter" data-name="sparx" onclick="filterItem(event)">SparX</button>
+    </div>
+    
+
+    <section id="all-products">
+        <div class="row">
+            <div class="container col-lg-3 col-md-4 col-sm-6">
+                <div class="card" data-name="furo">
+                    <img class="product-image" src="images/furo-shoe1.jpg" alt="FURO shoe" onclick="filterImage(event)">
+                </div>
+            </div>
+
+            <div class="container col-lg-3 col-md-4 col-sm-6">
+                <div class="card" data-name="furo">
+                    <img class="product-image" src="images/furo-shoe2.jpg" alt="FURO shoe" onclick="filterImage(event)">
+                </div>
+            </div>
+
+            <div class="container col-lg-3 col-md-4 col-sm-6">
+                <div class="card" data-name="sparx">
+                    <img class="product-image" src="images/sparx-shoe2.jpg" alt="SparX shoe" onclick="filterImage(event)">
+                </div>
+            </div>
+            
+            <div class="container col-lg-3 col-md-4 col-sm-6">
+                <div class="card" data-name="sparx">
+                    <img class="product-image" src="images/sparx-shoe1.jpg" alt="SparX shoe" onclick="filterImage(event)">
+                </div>
+            </div>
+            
+            <div class="container col-lg-3 col-md-4 col-sm-6">
+                <div class="card" data-name="addidas">
+                    <img class="product-image" src="images/addidas-shoe2.jpg" alt="Addidas shoe" onclick="filterImage(event)">
+                </div>
+            </div>
+            
+            <div class="container col-lg-3 col-md-4 col-sm-6">
+                <div class="card" data-name="nike">
+                    <img class="product-image" src="images/nike-shoe2.jpg" alt="Nike shoe" onclick="filterImage(event)">
+                </div>
+            </div>
+           
+            <div class="container col-lg-3 col-md-4 col-sm-6">
+                <div class="card" data-name="puma">
+                    <img class="product-image" src="images/puma-shoe2.jpg" alt="Puma shoe" onclick="filterImage(event)">
+                </div>
+            </div>
+            
+            <div class="container col-lg-3 col-md-4">
+                <div class="card"  data-name="reebok">
+                    <img class="product-image" src="images/reebok-shoe2.jpg" alt="Reebok shoe" onclick="filterImage(event)">
+                </div>
+            </div>
+        </div>
+    </section>     
+
+    <div class="preview-image">
+        <div class="detail-box">
+            <span class="title">Image Category: <p>Not defined</p></span>
+            <i class="bx bx-x" id="close-cart" onclick="closePreview()"></i>
+        </div>
+        <div class="image-box">
+            <img src="" alt="">
+        </div>
+        <div class="shadow"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
